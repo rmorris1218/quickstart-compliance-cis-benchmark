@@ -1990,9 +1990,9 @@ Resources:
       LogGroupName: !GetAtt ResourceForGetCloudWatchLogName.LogName
       FilterPattern: |-
         {
-          ($.userIdentity.type = "Root") &&
-          ($.userIdentity.invokedBy NOT EXISTS) &&
-          ($.eventType != "AwsServiceEvent")
+          $.userIdentity.type = "Root" &&
+          $.userIdentity.invokedBy NOT EXISTS &&
+          $.eventType != "AwsServiceEvent"
         }
       MetricTransformations:
       - MetricValue: '1'
